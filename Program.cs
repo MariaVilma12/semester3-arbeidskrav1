@@ -37,6 +37,7 @@ var q1Targets = new (Field field, string target)[]
     (Field.Mobile, "00000000"),   // absent
 };
 
+// Search each target in the phonebook and print the number of matches and comparisons.
 foreach (var (field, target) in q1Targets)
 {
     var matches = phonebook.LinearSearch(field, target, out int comparisons);
