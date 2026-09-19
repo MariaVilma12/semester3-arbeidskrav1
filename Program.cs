@@ -26,37 +26,53 @@ Console.WriteLine($"Loaded {phonebook.Count} contacts from {csvPath}");
 // Question 1: Searching unsorted data
 // ----------------------------------------------------------------------
 Console.WriteLine();
-Console.WriteLine("--- 1. Linear search, unsorted ---");
-Console.WriteLine($"{"field",-10} {"target",-10} {"matches",-8} {"comparisons",-11}");
+Console.WriteLine("======================================================");
+Console.WriteLine("--- 1. LINEAR SEARCH (UNSORTED PHONEBOOK) ---");
+Console.WriteLine("======================================================");
+
+Console.WriteLine(
+    $"{ "FIELD",-12} { "TARGET",-15} { "MATCHES",-10} { "COMPARISONS",-15} { "RESULT",-10}");
 
 var q1Targets = new (Field field, string target)[]
 {
-    // LastName tests
     (Field.LastName, "Bjerke"),
     (Field.LastName, "Hansen"),
-    (Field.LastName, "Aardal"), // absent
+    (Field.LastName, "Aardal"),     // absent
 
-    // FirstName tests
     (Field.FirstName, "Julie"),
-    (Field.FirstName, "Nobody"), // absent
+    (Field.FirstName, "Nobody"),    // absent
 
-    // Mobile test
-    (Field.Mobile, "00000000") // absent
+    (Field.Mobile, "00000000")      // absent
 };
 
-// Search each target in the phonebook and print the number of matches and comparisons.
 foreach (var (field, target) in q1Targets)
 {
     var matches = phonebook.LinearSearch(field, target, out int comparisons);
-    Console.WriteLine($"{field,-10} {target,-10} {matches.Length,-8} {comparisons,-11}");
-}
 
+    string result = matches.Length > 0
+        ? "FOUND"
+        : "NOT FOUND";
+
+    Console.WriteLine(
+        $"{field,-12} {target,-15} {matches.Length,-10} {comparisons,-15} {result,-10}");
+
+    if (matches.Length == 0)
+    {
+        Console.WriteLine(
+            $"{"",-12} Returned array: {(matches != null ? "EMPTY ARRAY []" : "NULL")}");
+
+        Console.WriteLine(
+            $"{"",-12} Empty array requirement: {(matches != null && matches.Length == 0 ? "PASS" : "FAIL")}");
+    }
+}
 // ----------------------------------------------------------------------
 // Question 2: Sorting
 // ----------------------------------------------------------------------
 Console.WriteLine();
-Console.WriteLine("--- 2. Sorting, by LastName ascending ---");
-Console.WriteLine($"{"algorithm",-14} {"shape",-16} {"comparisons",-11} {"moves",-6}");
+Console.WriteLine("======================================================");
+Console.WriteLine("--- 2. SORTING, BY LASTNAME ASCENDING ---");
+Console.WriteLine("======================================================");
+Console.WriteLine($"{"ALGORITHM",-14} {"SHAPE",-16} {"COMPARISONS",-11} {"MOVES",-6}");
 
 Contact[] asSupplied = phonebook.FreshCopy();
 
@@ -91,8 +107,10 @@ RunSortAndPrint("MergeSort", Sorting.MergeSort);
 // Question 3: Searching sorted data
 // ----------------------------------------------------------------------
 Console.WriteLine();
-Console.WriteLine("--- 3. Binary search, sorted by target field ascending ---");
-Console.WriteLine($"{"field",-10} {"target",-10} {"result",-8} {"comparisons",-11} {"linear",-6}");
+Console.WriteLine("===========================================================");
+Console.WriteLine("--- 3. BINARY SEARCH, SORTED BY TARGET FIELD ASCENDING ---");
+Console.WriteLine("===========================================================");
+Console.WriteLine($"{"FIELD",-10} {"TARGET",-10} {"RESULT",-8} {"COMPARISONS",-11} {"LINEAR",-6}");
 
 Phonebook SortedBy(Field field)
 {
@@ -123,7 +141,9 @@ RunBinaryAndLinear(byFirstName, Field.FirstName, "Julie");
 // The eight required binary search tests
 // ----------------------------------------------------------------------
 Console.WriteLine();
-Console.WriteLine("--- Binary search: 8 required tests ---");
+Console.WriteLine("==============================================================");
+Console.WriteLine("      --- BINARY SEARCH: 8 REQUIRED TESTS ---");
+Console.WriteLine("==============================================================");
 
 int passCount = 0;
 int total = 0;
