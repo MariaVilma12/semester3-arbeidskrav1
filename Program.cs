@@ -31,10 +31,17 @@ Console.WriteLine($"{"field",-10} {"target",-10} {"matches",-8} {"comparisons",-
 
 var q1Targets = new (Field field, string target)[]
 {
-    (Field.LastName, "Bjerke"),   // first record
-    (Field.LastName, "Hansen"),   // last record
-    (Field.LastName, "Aardal"),   // absent
-    (Field.Mobile, "00000000"),   // absent
+    // LastName tests
+    (Field.LastName, "Bjerke"),
+    (Field.LastName, "Hansen"),
+    (Field.LastName, "Aardal"), // absent
+
+    // FirstName tests
+    (Field.FirstName, "Julie"),
+    (Field.FirstName, "Nobody"), // absent
+
+    // Mobile test
+    (Field.Mobile, "00000000") // absent
 };
 
 // Search each target in the phonebook and print the number of matches and comparisons.
