@@ -141,14 +141,15 @@ The comparison logic is centralized in `ContactComparer`, allowing the same sort
 
 AI tools were used as development aids during this project.
 
-**Claude** was used to:
+**Claude** and **ChatGPT** were used to:
 
 * Discuss algorithm design and implementation ideas.
 * Review code for correctness and identify potential improvements.
-* Improve code comments and documentation.
+* Identify missing test cases and suggest additional edge-case testing.
+* Improve code comments, documentation, and report wording.
 * Help verify that the implementation satisfied the assignment requirements.
+* Explain algorithm behaviour, complexity analysis, and help compare measured results with theoretical expectations.
 
-All algorithm implementations, testing, debugging, and final verification were reviewed by the author before submission. The author takes responsibility for the final submitted solution.
 
 ---
 
