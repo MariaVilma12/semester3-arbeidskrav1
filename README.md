@@ -1,6 +1,6 @@
 # semester3-arbeidskrav1
 
-# Phonebook Search and Sorting
+# Search and Sorting
 
 ## Overview
 
